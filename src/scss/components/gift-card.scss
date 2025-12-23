@@ -1,0 +1,52 @@
+.gift-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 16px;
+  background: var(--color-white);
+  border-radius: var(--radius);
+
+  &__content {
+    flex: 1;
+  }
+
+  &__badge {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-green);
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__description {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  &__button {
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: none;
+    background: var(--color-green);
+    color: var(--color-white);
+    font-weight: 600;
+    transition: background var(--transition);
+
+    &:hover {
+      background: #008f47;
+    }
+  }
+
+  &__image {
+    width: 80px;
+    flex-shrink: 0;
+  }
+}

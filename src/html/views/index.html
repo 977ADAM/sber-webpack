@@ -1,0 +1,41 @@
+<% var data={ title: "Главная страница | Проект" }; %>
+  <%= _.template(require('./../includes/header1.html').default)(data) %>
+  
+  <main class="main">
+    <section class="gifts">
+      <h1 class="gifts__title">Выберите подарок</h1>
+
+      <article class="gift-card gift-card--prime">
+        <div class="gift-card__content">
+          <span class="gift-card__badge">СБЕР Прайм</span>
+
+          <h3 class="gift-card__title">
+            60 дней подписки Прайм за 1 ₽
+          </h3>
+
+          <p class="gift-card__description">
+            Бесплатный доступ к сервисам экосистемы Сбера
+          </p>
+
+          <button class="gift-card__button">
+            Подробнее
+          </button>
+        </div>
+
+        <div class="gift-card__image">
+          <img src="assets/images/prime.png" alt="">
+        </div>
+      </article>
+
+    </section>
+
+    <section class="faq">
+      <h2 class="faq__title">Вопросы и ответы</h2>
+    </section>
+  </main>
+
+
+
+
+  
+  <%= _.template(require('./../includes/footer.html').default)() %>

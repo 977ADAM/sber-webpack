@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link type="image/png" sizes="96x96" rel="icon" href="#" />
+    <link rel="stylesheet" href="css/style.bundle.css" />
+
+    <title>
+        <%=title%>
+    </title>
+</head>
+
+<body>
+    <header class="header">
+
+        <div class="container">
+            
+            <div class="header__inner">
+
+                <div class="timer-card">
+                    <svg class="progress-ring" width="160" height="160">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#00c853" />
+                                <stop offset="100%" stop-color="#00bcd4" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="ring-bg" cx="80" cy="80" r="70" />
+                        <circle class="ring-progress" cx="80" cy="80" r="70" />
+                    </svg>
+                    <div class="timer-content">
+                        <div class="label">Осталось</div>
+                        <div class="time" id="time">05:00</div>
+                    </div>
+                </div>
+
+                <div class="header__branding">
+                    <a href="#" class="header__logo">
+                        <img class="header__logo-image" src="img/logo.svg" alt="Сбер Прайм"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
