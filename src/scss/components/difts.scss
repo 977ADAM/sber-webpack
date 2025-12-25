@@ -1,11 +1,28 @@
-.gifts {
-  padding: 16px;
-
-  &__title {
-    margin-bottom: 16px;
-  }
-
-  & > .gift-card {
-    margin-bottom: 12px;
-  }
+.promo {
+  width: 1240px;
+}
+.promo-timer {
+  width: 816px;
+  height: 190px;
+  display: flex;
+  gap: 233px;
+}
+.timer{
+  width: 190px;
+  height: 190px;
+  border-radius: 32px;
+}
+.promo {
+  width: 393px;
+  height: 190px;
+  display: flex;
+  justify-content: space-between;
+}
+.promo-logo {
+  width: 393px;
+  height: 60px;
+}
+.promo-text {
+  width: 393px;
+  height: 50px;
 }
