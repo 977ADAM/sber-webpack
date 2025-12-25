@@ -3,23 +3,34 @@
   <%= _.template(require('./../includes/header.html').default)(data) %>
   
   <main class="main">
-
-    <section class="promo">
-      <div class="promo__timer"><!-- JS renders timer here --></div>
-      <div class="promo__content">
-        <div class="promo__logo">
-          <img src="img/logo.svg" alt="Project Logo">
+    <section class="promo" aria-labelledby="promo-title">
+      <div class="container">
+        <div class="timer timer--promo" data-timer>
+          <span class="visually-hidden">До окончания акции осталось</span>
+          <time class="timer-value" datetime="PT5M" aria-live="polite" aria-atomic="true">05:00</time>
         </div>
-        <p class="promo__text">Выберите подарок</p>
+
+        <div class="promo__content">
+
+          <a href="/" class="promo__logo" aria-label="На главную">
+            <img src="img/logo.svg" alt="Проект" width="393" height="60">
+          </a>
+
+          <h1 id="promo-title" class="promo__title">Выберите подарок</h1>
+        </div>
       </div>
     </section>
 
     <section class="offers">
-      <!-- offers here -->
+      <div class="container">
+        <h2 class="offers__title">Предложения</h2>
+      </div>
     </section>
 
     <section class="faq">
-      <!-- faq here -->
+      <div class="container">
+        <h2 class="faq__title">Вопросы и ответы</h2>
+      </div>
     </section>
 
   </main>
