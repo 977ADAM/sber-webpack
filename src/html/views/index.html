@@ -5,8 +5,20 @@
   <main class="main">
     <section class="promo" aria-labelledby="promo-title">
       <div class="timer timer--promo" data-timer>
-        <span class="visually-hidden">До окончания акции осталось</span>
-        <time class="timer-value" datetime="PT5M" aria-live="polite" aria-atomic="true">05:00</time>
+        <svg class="progress-ring" width="142" height="142">
+          <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#00c853" />
+                  <stop offset="100%" stop-color="#00bcd4" />
+              </linearGradient>
+          </defs>
+          <circle class="ring-bg"/>
+          <circle class="ring-progress"/>
+        </svg>
+        <div class="timer__inner">
+          <span class="timer__hidden">Осталось</span>
+          <time class="timer__value" id="time" aria-live="polite" aria-atomic="true">05:00</time>
+        </div>
       </div>
       <div class="promo__content">
         <a href="/" class="promo__logo" aria-label="На главную">
