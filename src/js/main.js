@@ -64,3 +64,9 @@ class Timer {
     );
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document
+    .querySelectorAll('[data-timer]')
+    .forEach(el => new Timer(el));
+});
