@@ -1,30 +1,66 @@
-const TOTAL_TIME = 5 * 60; // 5 минут
-let timeLeft = TOTAL_TIME;
+class Timer {
+  constructor(root) {
+    this.root = root;
+    this.duration = Number(root.dataset.duration) || 0;
 
-const timeEl = document.getElementById("time");
-const progressCircle = document.querySelector(".ring-progress");
+    this.timeEl = root.querySelector('.timer__value');
+    this.progressCircle = root.querySelector('.timer__ring-progress');
 
-const radius = progressCircle.r.baseVal.value;
-const circumference = 2 * Math.PI * radius;
+    if (!this.timeEl || !this.progressCircle || !this.duration) {
+      console.warn('Timer: invalid markup', root);
+      return;
+    }
 
-progressCircle.style.strokeDasharray = circumference;
-progressCircle.style.strokeDashoffset = 0;
+    this.radius = this.progressCircle.r.baseVal.value;
+    this.circumference = 2 * Math.PI * this.radius;
 
-function updateTimer() {
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
+    this.progressCircle.style.strokeDasharray = this.circumference;
+    this.progressCircle.style.strokeDashoffset = 0;
 
-  timeEl.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    this.start();
+  }
 
-  const progress = timeLeft / TOTAL_TIME;
-  progressCircle.style.strokeDashoffset = circumference * (1 - progress);
+  start() {
+    this.endTime = Date.now() + this.duration * 1000;
+    this.update();
 
-  if (timeLeft > 0) {
-    timeLeft--;
-  } else {
-    clearInterval(timer);
+    this.interval = setInterval(() => this.update(), 1000);
+  }
+
+  update() {
+    const timeLeft = Math.max(
+      0,
+      Math.ceil((this.endTime - Date.now()) / 1000)
+    );
+
+    this.render(timeLeft);
+
+    if (timeLeft <= 0) {
+      this.stop();
+      this.emit('timer:end');
+    }
+  }
+
+  render(secondsLeft) {
+    const minutes = Math.floor(secondsLeft / 60);
+    const seconds = secondsLeft % 60;
+
+    this.timeEl.textContent =
+      `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+    const progress = secondsLeft / this.duration;
+    this.progressCircle.style.strokeDashoffset =
+      this.circumference * (1 - progress);
+  }
+
+  stop() {
+    clearInterval(this.interval);
+    this.root.classList.add('is-finished');
+  }
+
+  emit(name) {
+    this.root.dispatchEvent(
+      new CustomEvent(name, { bubbles: true })
+    );
   }
 }
-
-updateTimer();
-const timer = setInterval(updateTimer, 1000);

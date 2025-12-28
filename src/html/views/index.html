@@ -3,29 +3,17 @@
   <%= _.template(require('./../includes/header.html').default)(data) %>
   
   <main class="main">
+    
     <section class="promo" aria-labelledby="promo-title">
-      <div class="timer timer--promo" data-timer>
-        <svg class="progress-ring" width="142" height="142">
-          <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#00c853" />
-                  <stop offset="100%" stop-color="#00bcd4" />
-              </linearGradient>
-          </defs>
-          <circle class="ring-bg" cx="71" cy="71" r="66"/>
-          <circle class="ring-progress" cx="71" cy="71" r="66"/>
-        </svg>
-        <div class="timer__inner">
-          <span class="timer__hidden">Осталось</span>
-          <time class="timer__value" id="promo-timer" aria-live="polite" aria-atomic="true">05:00</time>
-        </div>
-      </div>
+      <%= _.template(require('./../includes/timer.html').default)() %>
+
       <div class="promo__content">
         <a href="/" class="promo__logo" aria-label="На главную">
           <img src="img/logo.svg" alt="Проект — на главную" width="393" height="60">
         </a>
         <h1 id="promo-title" class="promo__title">Выберите подарок</h1>
       </div>
+
     </section>
 
     <section class="offers">

@@ -4,42 +4,33 @@
   display: flex;
   justify-content: space-between;
 
-  .timer {
-    width: 190px;
-    height: 190px;
-    border-radius: 32px;
-    background: var(--color-white);
-    box-shadow: 2px 6px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  // .timer {
+  //   &__inner {
+  //     width: 103px;
+  //     height: 56px;
+  //     padding: 67px 44px;
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: center;
+  //   }
 
-    &__inner {
-      width: 103px;
-      height: 56px;
-      padding: 67px 44px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+  //   &__hidden {
+  //     width: 61px;
+  //     height: 16px;
+  //     font-weight: 400;
+  //     font-size: 13px;
+  //     text-align: center;
+  //   }
 
-    &__hidden {
-      width: 61px;
-      height: 16px;
-      font-weight: 400;
-      font-size: 13px;
-      text-align: center;
-    }
+  //   &__value {
+  //     width: 100%;
+  //     height: 40px;
+  //     font-weight: 700;
+  //     font-size: 32px;
+  //     text-align: center;
+  //   }
 
-    &__value {
-      width: 100%;
-      height: 40px;
-      font-weight: 700;
-      font-size: 32px;
-      text-align: center;
-    }
-
-  }
+  // }
 
   &__content {
     width: 393px;
@@ -67,23 +58,23 @@
     margin: 0;
   }
 
-  .progress-ring {
-    position: absolute;
-    transform: rotate(-90deg);
-  }
-  circle {
-    fill: none;
-    stroke-width: 6;
-  }
+  // .progress-ring {
+  //   position: absolute;
+  //   transform: rotate(-90deg);
+  // }
+  // circle {
+  //   fill: none;
+  //   stroke-width: 6;
+  // }
 
-  .ring-bg {
-    stroke: #e6e6e6;
-  }
+  // .ring-bg {
+  //   stroke: #e6e6e6;
+  // }
 
-  .ring-progress {
-    stroke: url(#gradient);
-    stroke-linecap: round;
-    transition: stroke-dashoffset 0.3s linear;
-  }
+  // .ring-progress {
+  //   stroke: url(#gradient);
+  //   stroke-linecap: round;
+  //   transition: stroke-dashoffset 0.3s linear;
+  // }
 
 }
