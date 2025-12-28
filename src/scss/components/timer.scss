@@ -1,0 +1,17 @@
+.timer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &__ring-progress {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    stroke: url(#timer-gradient);
+    transition: stroke-dashoffset 1s linear;
+  }
+
+  &.is-finished {
+    opacity: 0.5;
+  }
+}

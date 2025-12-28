@@ -4,7 +4,7 @@ let timeLeft = TOTAL_TIME;
 const timeEl = document.getElementById("time");
 const progressCircle = document.querySelector(".ring-progress");
 
-const radius = 70;
+const radius = progressCircle.r.baseVal.value;
 const circumference = 2 * Math.PI * radius;
 
 progressCircle.style.strokeDasharray = circumference;
