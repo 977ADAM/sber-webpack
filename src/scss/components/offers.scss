@@ -11,6 +11,8 @@
         box-shadow: 2px 4px 24px rgba(0, 0, 0, 0.1);
         border-radius: 16px;
         display: flex;
+        position: relative;
+        overflow: hidden;
 
         &--info {
             width: 624px;
@@ -81,12 +83,16 @@
             margin-left: auto;
         }
 
+        &--ellipse {
+            position: absolute;
+            width: 1139px;
+            height: 338px;
+            background: linear-gradient(97.8deg, rgba(5, 174, 235, 0.4) -19.65%, rgba(4, 217, 3, 0.4) 49.44%);
+            filter: blur(210px);
+            margin-top: 76px;
+            margin-left: 700px;
+        }
     }
-
-
-
-
-
 
     &__okko {
         height: 200px;
