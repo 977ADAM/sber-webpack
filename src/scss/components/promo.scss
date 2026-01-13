@@ -4,34 +4,6 @@
   display: flex;
   justify-content: space-between;
 
-  // .timer {
-  //   &__inner {
-  //     width: 103px;
-  //     height: 56px;
-  //     padding: 67px 44px;
-  //     display: flex;
-  //     flex-direction: column;
-  //     align-items: center;
-  //   }
-
-  //   &__hidden {
-  //     width: 61px;
-  //     height: 16px;
-  //     font-weight: 400;
-  //     font-size: 13px;
-  //     text-align: center;
-  //   }
-
-  //   &__value {
-  //     width: 100%;
-  //     height: 40px;
-  //     font-weight: 700;
-  //     font-size: 32px;
-  //     text-align: center;
-  //   }
-
-  // }
-
   &__content {
     width: 393px;
     display: flex;
@@ -57,24 +29,5 @@
     font-size: 41px;
     margin: 0;
   }
-
-  // .progress-ring {
-  //   position: absolute;
-  //   transform: rotate(-90deg);
-  // }
-  // circle {
-  //   fill: none;
-  //   stroke-width: 6;
-  // }
-
-  // .ring-bg {
-  //   stroke: #e6e6e6;
-  // }
-
-  // .ring-progress {
-  //   stroke: url(#gradient);
-  //   stroke-linecap: round;
-  //   transition: stroke-dashoffset 0.3s linear;
-  // }
 
 }

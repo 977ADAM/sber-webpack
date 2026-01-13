@@ -15,7 +15,7 @@ class Timer {
     this.circumference = 2 * Math.PI * this.radius;
 
     this.progressCircle.style.strokeDasharray = this.circumference;
-    this.progressCircle.style.strokeDashoffset = 0;
+    this.progressCircle.style.strokeDashoffset = this.circumference;
 
     this.start();
   }
@@ -50,7 +50,7 @@ class Timer {
 
     const progress = secondsLeft / this.duration;
     this.progressCircle.style.strokeDashoffset =
-      this.circumference * (1 - progress);
+      this.circumference * progress;
   }
 
   stop() {

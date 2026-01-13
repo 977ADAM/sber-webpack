@@ -1,0 +1,75 @@
+.card {
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 50px;
+
+    &__sber {
+        height: 248px;
+        background: var(--color-white);
+        box-shadow: 2px 4px 24px rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+
+        &--info {
+            width: 624px;
+            height: 228.48px;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        &--logo {
+            width: 238.69px;
+            height: 36.48px;
+            padding-top: 20px;
+        }
+
+        &--text {
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            h2 {
+                font-weight: 700;
+                font-size: 40px;
+                line-height: 100%;
+                margin: auto;
+            }
+
+            p {
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 100%;
+                margin: auto;
+            }
+            
+        }
+
+        &--image {
+            position: absolute;
+
+        }
+
+    }
+
+
+
+
+
+
+    &__okko {
+        height: 200px;
+        background: var(--color-white);
+        box-shadow: 2px 6px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+    }
+    &__samocat {
+        height: 200px;
+        background: var(--color-white);
+        box-shadow: 2px 6px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+    }
+}
