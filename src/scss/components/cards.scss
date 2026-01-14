@@ -1,5 +1,5 @@
 // Описываем темы централизованно
-$card-themes: (
+$themes: (
     sber: (
         ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
         link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
@@ -11,17 +11,17 @@ $card-themes: (
         logo-h: 56px
     ),
     samocat: (
-        ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
+        ellipse: linear-gradient(129.73deg, rgba(254, 52, 91, 0) 12.55%, #FE345B 72.7%),
         link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
         logo-h: 56px
     ),
     citydrive: (
-        ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
+        ellipse: linear-gradient(144.43deg, rgba(77, 14, 198, 0) 8.14%, #4D0EC6 79.15%),
         link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
         logo-h: 56px
     ),
     afisha: (
-        ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
+        ellipse: linear-gradient(129.73deg, rgba(254, 52, 91, 0) 12.55%, #FE345B 72.7%),
         link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
         logo-h: 56px
     )
@@ -135,8 +135,22 @@ $card-themes: (
             top: 15.23px;
         }
     }
-}
 
-.cards__item[data-theme="sber"] {
-    padding: 1px;
+    // Генерация модификаторов темы
+    @each $name, $theme in $themes {
+        &__item--#{$name} {
+
+            &::after {
+                background: #{map-get($theme, ellipse)};
+            }
+
+            .cards__link {
+                background: #{map-get($theme, link-bg)};
+            }
+
+            .cards__logo {
+                height: #{map-get($theme, logo-h)};
+            }
+        }
+    }
 }
