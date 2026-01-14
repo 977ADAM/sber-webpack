@@ -87,6 +87,20 @@
 
     &__image {
         margin-left: auto;
+        z-index: 1;
+
+        &--okko {
+            
+            img:first-child {
+                position: relative;
+                top: 58.05px;
+            }
+
+            img:last-child {
+                position: relative;
+                top: 15.23px;
+            }
+        }
     }
 
     &__ellipse {
@@ -97,5 +111,9 @@
         filter: blur(210px);
         margin-top: 76px;
         margin-left: 700px;
+
+        &--okko {
+            background: linear-gradient(144.43deg, rgba(77, 14, 198, 0) 8.14%, #4D0EC6 79.15%);
+        }
     }
 }
