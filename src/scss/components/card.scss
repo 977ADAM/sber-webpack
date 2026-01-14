@@ -1,4 +1,4 @@
-.card {
+.cards {
     gap: 15px;
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@
 
     }
 
-    a {
+    &__link {
         width: 253px;
         height: 52px;
         background: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%);
@@ -82,18 +82,17 @@
         min-height: 228.47999572753906px;
         margin-left: auto;
         z-index: 1;
+    }
+
+    &__decor {
+        position: relative;
+
+        &--popcorn {
+            top: 58.05px;
+        }
 
         &--okko {
-            
-            img:first-child {
-                position: relative;
-                top: 58.05px;
-            }
-
-            img:last-child {
-                position: relative;
-                top: 15.23px;
-            }
+            top: 15.23px;
         }
     }
 
@@ -103,8 +102,8 @@
         height: 338px;
         background: linear-gradient(97.8deg, rgba(5, 174, 235, 0.4) -19.65%, rgba(4, 217, 3, 0.4) 49.44%);
         filter: blur(210px);
-        margin-top: 76px;
-        margin-left: 700px;
+        top: 76px;
+        left: 700px;
 
         &--okko {
             background: linear-gradient(144.43deg, rgba(77, 14, 198, 0) 8.14%, #4D0EC6 79.15%);
