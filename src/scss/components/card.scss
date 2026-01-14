@@ -5,6 +5,15 @@
     justify-content: space-between;
     padding-top: 50px;
 
+    &__content {
+        width: 624px;
+        height: 228.48px;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
     &__item {
         height: 248px;
         background: var(--color-white);
@@ -13,6 +22,16 @@
         display: flex;
         position: relative;
         overflow: hidden;
+    }
+
+    &__logo {
+        height: 56.48px;
+        
+        &--sber {
+            height: 36.48px;
+            padding-top: 20px;
+        }
+        
     }
 
     &__sber {
