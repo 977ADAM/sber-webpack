@@ -1,0 +1,26 @@
+@mixin text($size, $weight: 400, $line: 1, $color: var(--c-text)) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line;
+  color: $color;
+  margin: 0;
+}
+
+@mixin button-pill($w, $h, $radius: 8px) {
+  width: $w;
+  height: $h;
+  border-radius: $radius;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+@mixin ellipse-blur($w, $h, $blur, $bg) {
+  position: absolute;
+  width: $w;
+  height: $h;
+  background: $bg;
+  filter: blur($blur);
+  content: "";
+}

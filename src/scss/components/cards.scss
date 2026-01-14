@@ -1,3 +1,32 @@
+// Описываем темы централизованно
+$card-themes: (
+    sber: (
+        ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
+        link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
+        logo-h: 36px
+    ),
+    okko: (
+        ellipse: linear-gradient(144.43deg, rgba(77, 14, 198, 0) 8.14%, #4D0EC6 79.15%),
+        link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
+        logo-h: 56px
+    ),
+    samocat: (
+        ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
+        link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
+        logo-h: 56px
+    ),
+    citydrive: (
+        ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
+        link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
+        logo-h: 56px
+    ),
+    afisha: (
+        ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
+        link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
+        logo-h: 56px
+    )
+);
+
 .cards {
     gap: 15px;
     display: flex;
@@ -12,6 +41,17 @@
         display: flex;
         position: relative;
         overflow: hidden;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 1139px;
+            height: 338px;
+            background: linear-gradient(97.8deg, rgba(5, 174, 235, 0.4) -19.65%, rgba(4, 217, 3, 0.4) 49.44%);
+            filter: blur(210px);
+            top: 76px;
+            left: 700px;
+        }
     }
 
     &__content {
@@ -113,19 +153,4 @@
 
 .cards__item[data-theme="sber"] {
     padding: 1px;
-}
-
-.cards__item::after {
-    content: "";
-    position: absolute;
-    width: 1139px;
-    height: 338px;
-    background: linear-gradient(97.8deg, rgba(5, 174, 235, 0.4) -19.65%, rgba(4, 217, 3, 0.4) 49.44%);
-    filter: blur(210px);
-    top: 76px;
-    left: 700px;
-
-    &--okko {
-        background: linear-gradient(144.43deg, rgba(77, 14, 198, 0) 8.14%, #4D0EC6 79.15%);
-    }
 }
