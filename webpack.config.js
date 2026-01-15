@@ -57,7 +57,7 @@ const config = {
       {
         test: /\.html$/,
         include: path.resolve(__dirname, "src/html/includes"),
-        use: ["raw-loader"]
+        type: "asset/source",
       }
     ],
   },
@@ -72,7 +72,7 @@ const config = {
         { from: "src/img", to: "img" },
       ],
     }),
-    ...htmlPlugins
+    ...htmlPlugins,
   ],
   devServer: {
     port: 9000,
