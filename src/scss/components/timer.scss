@@ -1,9 +1,11 @@
+@use '../global/tokens' as tokens;
+
 .timer {
   width: 190px;
   height: 190px;
-  border-radius: 32px;
+  border-radius: tokens.$radius-xl;
   background: var(--color-white);
-  box-shadow: 2px 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: tokens.$shadow-elevated;
   position: relative;
   display: inline-flex;
   align-items: center;

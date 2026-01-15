@@ -1,8 +1,10 @@
 // Размеры/скругления/тени — лучше токенами
 $radius-md: 8px;
 $radius-lg: 16px;
+$radius-xl: 32px;
 
 $shadow-card: 2px 4px 24px rgba(0, 0, 0, 0.1);
+$shadow-elevated: 2px 6px 20px rgba(0, 0, 0, 0.1);
 
 // Типографика (в идеале — rem, но оставлю px близко к твоим значениям)
 $fs-title: 40px;

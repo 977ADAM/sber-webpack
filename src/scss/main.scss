@@ -1,12 +1,11 @@
-@use 'global/globals.scss';
-@use 'global/tokens.scss';
-@use 'global/fonts.scss';
+@use 'global/globals';
+@use 'global/tokens';
+@use 'global/fonts';
 
-
-@import 'components/faq.scss';
-@import 'components/promo.scss';
-@import 'components/timer.scss';
-@import 'components/cards.scss';
+@use 'components/faq';
+@use 'components/promo';
+@use 'components/timer';
+@use 'components/cards';
 
 html,
 body {

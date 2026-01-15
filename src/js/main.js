@@ -21,6 +21,10 @@ class Timer {
   }
 
   start() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+
     this.endTime = Date.now() + this.duration * 1000;
     this.update();
 

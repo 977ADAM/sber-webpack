@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use '../global/mixins' as *;
+@use '../global/tokens' as tokens;
+
 // Описываем темы централизованно
 $themes: (
     sber: (
@@ -36,8 +40,8 @@ $themes: (
     &__item {
         min-height: 248px;
         background: var(--color-white);
-        box-shadow: 2px 4px 24px rgba(0, 0, 0, 0.1);
-        border-radius: 16px;
+        box-shadow: tokens.$shadow-card;
+        border-radius: tokens.$radius-lg;
         display: flex;
         position: relative;
         overflow: hidden;
@@ -84,38 +88,24 @@ $themes: (
 
         h3 {
             height: 48px;
-            font-weight: 700;
-            font-size: 40px;
-            line-height: 100%;
-            margin: 0;
+            @include text(tokens.$fs-title, 700, tokens.$lh-title, var(--color-black1));
             display: flex;
             align-items: center;
         }
 
         p {
-            @include text(20px, 400, 1, #26262699);
-            // font-weight: 400;
-            // font-size: 20px;
-            // line-height: 100%;
-            // margin: 0;
-            // color: #26262699;
+            @include text(tokens.$fs-text, 400, tokens.$lh-text, #26262699);
         }
 
     }
 
     &__link {
-        width: 253px;
-        height: 52px;
+        @include button-pill(253px, 52px, tokens.$radius-md);
         background: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%);
         color: var(--color-white);
-        border-radius: 8px;
         font-weight: 590;
         font-size: 24px;
         line-height: 20px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
         letter-spacing: -0.03em;
     }
 
@@ -142,15 +132,15 @@ $themes: (
         &__item--#{$name} {
 
             &::after {
-                background: #{map-get($theme, ellipse)};
+                background: map.get($theme, ellipse);
             }
 
             .cards__link {
-                background: #{map-get($theme, link-bg)};
+                background: map.get($theme, link-bg);
             }
 
             .cards__logo {
-                height: #{map-get($theme, logo-h)};
+                height: map.get($theme, logo-h);
             }
         }
     }

@@ -4,6 +4,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
@@ -44,9 +46,6 @@ const config = {
           {
             loader: "sass-loader",
             options: {
-              additionalData: `
-                @use 'global/mixins';
-              `,
               sassOptions: {
                 quietDeps: true,
                 silenceDeprecations: ["import", "mixed-decls"]
@@ -92,6 +91,16 @@ const config = {
 module.exports = (_env, argv) => {
   if (argv.mode === "production") {
     config.mode = "production";
+    config.devtool = false;
+    config.optimization = {
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          parallel: true,
+        }),
+        new CssMinimizerPlugin(),
+      ],
+    };
     config.plugins.push(new CleanWebpackPlugin());
   }
   return config;

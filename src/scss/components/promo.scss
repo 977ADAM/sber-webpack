@@ -1,3 +1,6 @@
+@use '../global/mixins' as *;
+@use '../global/tokens' as tokens;
+
 .promo {
   width: 816px;
   height: 190px;
@@ -25,9 +28,7 @@
 
   &__title {
     height: 50px;
-    font-weight: 590;
-    font-size: 41px;
-    margin: 0;
+    @include text(tokens.$fs-title, 590, tokens.$lh-title, var(--color-black1));
   }
 
 }
