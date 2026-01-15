@@ -2,22 +2,35 @@
 @use '../global/tokens' as tokens;
 
 .promo {
-  width: 816px;
-  height: 190px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: clamp(12px, 2vw, 24px);
+
+  max-width: 100%;
+  min-height: 190px;
+  padding: clamp(12px, 2.5vw, 24px);
+
+  .timer {
+    flex: 0 0 auto;
+  }
 
   &__content {
-    width: 393px;
+    flex: 1 1 320px;
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    gap: clamp(12px, 2vw, 20px);
+
     align-items: center;
+    text-align: center;
   }
 
   &__logo {
     display: inline-block;
-    max-width: 393px;
+    max-width: min(393px, 100%);
 
     img {
       width: 100%;
@@ -27,8 +40,24 @@
   }
 
   &__title {
-    height: 50px;
-    @include text(tokens.$fs-title, 590, tokens.$lh-title, var(--color-black1));
+    @include text(clamp(28px, 4vw, tokens.$fs-title), 600, 1.05, var(--color-black1));
+    margin: 0;
   }
 
+  @media (min-width: 768px) {
+    &__content {
+      align-items: flex-end;
+      text-align: right;
+    }
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: stretch;
+
+    &__content {
+      align-items: center;
+      text-align: center;
+    }
+  }
 }

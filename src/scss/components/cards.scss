@@ -32,116 +32,172 @@ $themes: (
 );
 
 .cards {
-    gap: 15px;
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
+    gap: 15px;
+    padding-top: clamp(24px, 4vw, 50px);
+}
 
-    &__item {
-        min-height: 248px;
-        background: var(--color-white);
-        box-shadow: tokens.$shadow-card;
-        border-radius: tokens.$radius-lg;
-        display: flex;
-        position: relative;
-        overflow: hidden;
+.cards__item {
+    --card-ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%);
+    --card-link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%);
+    --card-logo-h: 56px;
 
-        &::after {
-            content: "";
-            position: absolute;
-            width: 1139px;
-            height: 338px;
-            background: linear-gradient(97.8deg, rgba(5, 174, 235, 0.4) -19.65%, rgba(4, 217, 3, 0.4) 49.44%);
-            filter: blur(210px);
-            top: 76px;
-            left: 700px;
-        }
-    }
+    background: var(--color-white);
+    box-shadow: tokens.$shadow-card;
+    border-radius: tokens.$radius-lg;
+    overflow: hidden;
+    position: relative;
 
-    &__content {
-        min-width: 624px;
-        min-height: 228.47999572753906px;
-        position: relative;
-        left: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(12px, 2vw, 24px);
+    padding: clamp(16px, 3vw, 28px);
 
-    &__logo {
-        height: 56.48px;
-        
-        &--sber {
-            height: 36.48px;
-            padding-top: 20px;
-        }
-        
-    }
-
-    &__title {
-        height: 80px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-
-
-
-        h3 {
-            height: 48px;
-            @include text(tokens.$fs-title, 700, tokens.$lh-title, var(--color-black1));
-            display: flex;
-            align-items: center;
-        }
-
-        p {
-            @include text(tokens.$fs-text, 400, tokens.$lh-text, #26262699);
-        }
-
-    }
-
-    &__link {
-        @include button-pill(253px, 52px, tokens.$radius-md);
-        background: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%);
-        color: var(--color-white);
-        font-weight: 590;
-        font-size: 24px;
-        line-height: 20px;
-        letter-spacing: -0.03em;
-    }
-
-    &__image {
-        min-height: 228.47999572753906px;
-        margin-left: auto;
-        z-index: 1;
-    }
-
-    &__decor {
-        position: relative;
-
-        &--popcorn {
-            top: 58.05px;
-        }
-
-        &--okko {
-            top: 15.23px;
-        }
-    }
-
-    // Генерация модификаторов темы
-    @each $name, $theme in $themes {
-        &__item--#{$name} {
-
-            &::after {
-                background: map.get($theme, ellipse);
-            }
-
-            .cards__link {
-                background: map.get($theme, link-bg);
-            }
-
-            .cards__logo {
-                height: map.get($theme, logo-h);
-            }
-        }
+    &::after {
+        content: "";
+        position: absolute;
+        width: clamp(320px, 70vw, 1139px);
+        height: clamp(220px, 45vw, 338px);
+        right: -30%;
+        bottom: -45%;
+        background: var(--card-ellipse);
+        filter: blur(clamp(80px, 12vw, 210px));
+        pointer-events: none;
     }
 }
+
+.cards__content {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 1.8vw, 20px);
+    position: relative;
+    z-index: 1;
+}
+
+.cards__logo {
+    img {
+        display: block;
+        max-height: var(--card-logo-h);
+        width: auto;
+        max-width: min(380px, 100%);
+        height: auto;
+    }
+}
+
+.cards__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    h3 {
+        @include text(clamp(22px, 3.2vw, tokens.$fs-title), 700, 1.05, var(--color-black1));
+        margin: 0;
+    }
+
+    p {
+        @include text(clamp(16px, 2.2vw, tokens.$fs-text), 400, 1.2, rgba(38, 38, 38, 0.6));
+        margin: 0;
+    }
+}
+
+.cards__link {
+    align-self: flex-start;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 14px 20px;
+    border-radius: tokens.$radius-md;
+    text-decoration: none;
+
+    background: var(--card-link-bg);
+    color: var(--color-white);
+
+    font-weight: 600;
+    font-size: clamp(16px, 2.2vw, 24px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+
+    transition: transform var(--transition), filter var(--transition);
+
+    &:hover {
+        filter: brightness(1.03);
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+
+    &:focus-visible {
+        outline: 2px solid rgba(0, 0, 0, 0.25);
+        outline-offset: 2px;
+    }
+}
+
+.cards__image {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-width: 0;
+
+    img {
+        display: block;
+        height: auto;
+        max-width: min(330px, 38vw);
+    }
+}
+
+.cards__decor {
+    position: absolute;
+    height: auto;
+    width: auto;
+}
+
+.cards__decor--popcorn {
+    right: 110px;
+    bottom: 0;
+    max-width: min(200px, 28vw);
+}
+
+.cards__decor--okko {
+    right: 0;
+    bottom: 10px;
+    max-width: min(150px, 22vw);
+}
+
+@media (max-width: 720px) {
+    .cards__item {
+        grid-template-columns: 1fr;
+    }
+
+    .cards__image {
+        justify-content: center;
+
+        img {
+            max-width: min(360px, 90vw);
+        }
+    }
+
+    .cards__link {
+        width: 100%;
+    }
+
+    .cards__decor--popcorn {
+        right: 90px;
+    }
+}
+
+@each $name, $theme in $themes {
+    .cards__item--#{$name} {
+        --card-ellipse: #{map.get($theme, ellipse)};
+        --card-link-bg: #{map.get($theme, link-bg)};
+        --card-logo-h: #{map.get($theme, logo-h)};
+    }
+}
+
