@@ -93,7 +93,7 @@ $themes: (
         }
 
         p {
-            @include cards-text(20px, 400, 1, #26262699);
+            @include text(20px, 400, 1, #26262699);
             // font-weight: 400;
             // font-size: 20px;
             // line-height: 100%;
