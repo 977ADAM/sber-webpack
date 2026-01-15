@@ -1,15 +1,19 @@
 class Timer {
   constructor(root) {
+    this.isValid = false;
+
     this.root = root;
     this.duration = Number(root.dataset.duration) || 0;
 
     this.timeEl = root.querySelector('.timer__value');
     this.progressCircle = root.querySelector('.timer__ring-progress');
 
-    if (!this.timeEl || !this.progressCircle || !this.duration || this.duration <= 0) {
+    if (!this.timeEl || !this.progressCircle || !Number.isFinite(this.duration) || this.duration <= 0) {
       console.warn('Timer: invalid markup or duration', root);
       return;
     }
+
+    this.isValid = true;
 
     this.radius = this.progressCircle.r.baseVal.value;
     this.circumference = 2 * Math.PI * this.radius;
@@ -167,9 +171,8 @@ function initTimers() {
       
       try {
         const timer = new Timer(el);
-        // Сохраняем экземпляр только если он успешно создан
-        // (конструктор возвращает undefined при ошибке валидации)
-        if (timer instanceof Timer) {
+        // Сохраняем экземпляр только если он успешно провалидировался
+        if (timer.isValid) {
           timerInstances.set(el, timer);
         }
       } catch (error) {
