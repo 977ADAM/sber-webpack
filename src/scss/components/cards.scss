@@ -5,27 +5,27 @@
 // Описываем темы централизованно
 $themes: (
     sber: (
-        ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
+        glow: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
         link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
         logo-h: 36px
     ),
     okko: (
-        ellipse: linear-gradient(144.43deg, rgba(77, 14, 198, 0) 8.14%, #4D0EC6 79.15%),
+        glow: linear-gradient(144.43deg, rgba(77, 14, 198, 0) 8.14%, #4D0EC6 79.15%),
         link-bg: #3705AB,
         logo-h: 56px
     ),
     samocat: (
-        ellipse: linear-gradient(129.73deg, rgba(254, 52, 91, 0) 12.55%, #FE345B 72.7%),
+        glow: linear-gradient(129.73deg, rgba(254, 52, 91, 0) 12.55%, #FE345B 72.7%),
         link-bg: #FF335F,
         logo-h: 56px
     ),
     citydrive: (
-        ellipse: linear-gradient(144.43deg, rgba(77, 14, 198, 0) 8.14%, #4D0EC6 79.15%),
+        glow: linear-gradient(144.43deg, rgba(77, 14, 198, 0) 8.14%, #4D0EC6 79.15%),
         link-bg: #5F00A5,
         logo-h: 56px
     ),
     afisha: (
-        ellipse: linear-gradient(129.73deg, rgba(254, 52, 91, 0) 12.55%, #FE345B 72.7%),
+        glow: linear-gradient(129.73deg, rgba(254, 52, 91, 0) 12.55%, #FE345B 72.7%),
         link-bg: #FF2100,
         logo-h: 56px
     )
@@ -39,7 +39,7 @@ $themes: (
 }
 
 .cards__item {
-    --card-ellipse: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%);
+    --card-glow: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%);
     --card-link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%);
     --card-logo-h: 56px;
 
@@ -52,38 +52,39 @@ $themes: (
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    gap: clamp(12px, 2vw, 24px);
+    gap: clamp(12px, 2.5vw, 28px);
     padding: clamp(16px, 3vw, 28px);
+    min-height: 248px;
 
     &::after {
         content: "";
         position: absolute;
-        width: clamp(320px, 70vw, 1139px);
-        height: clamp(220px, 45vw, 338px);
-        right: -30%;
-        bottom: -45%;
-        background: var(--card-ellipse);
-        filter: blur(clamp(80px, 12vw, 210px));
+        inset: -40% -30% -40% 45%;
+        background: var(--card-glow);
+        filter: blur(clamp(40px, 6vw, 140px));
+        opacity: 1;
         pointer-events: none;
     }
 }
 
 .cards__content {
+    position: relative;
+    z-index: 1;
+
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: clamp(12px, 1.8vw, 20px);
-    position: relative;
-    z-index: 1;
+    gap: clamp(12px, 2vw, 20px);
 }
 
 .cards__logo {
+    height: var(--card-logo-h);
+
     img {
         display: block;
-        max-height: var(--card-logo-h);
+        height: 100%;
         width: auto;
         max-width: min(380px, 100%);
-        height: auto;
     }
 }
 
@@ -93,12 +94,12 @@ $themes: (
     gap: 8px;
 
     h3 {
-        @include text(clamp(22px, 3.2vw, tokens.$fs-title), 700, 1.05, var(--color-black1));
+        @include text(clamp(26px, 3.3vw, tokens.$fs-title), 700, 1.05, var(--color-black1));
         margin: 0;
     }
 
     p {
-        @include text(clamp(16px, 2.2vw, tokens.$fs-text), 400, 1.2, rgba(38, 38, 38, 0.6));
+        @include text(clamp(14px, 2vw, tokens.$fs-text), 400, 1.2, rgba(38, 38, 38, 0.6));
         margin: 0;
     }
 }
@@ -109,8 +110,10 @@ $themes: (
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     min-height: 52px;
     padding: 14px 20px;
+    min-width: 253px;
     border-radius: tokens.$radius-md;
     text-decoration: none;
 
@@ -144,12 +147,13 @@ $themes: (
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    min-width: 0;
+
+    padding-right: clamp(0px, 1vw, 8px);
 
     img {
         display: block;
         height: auto;
-        max-width: min(330px, 38vw);
+        max-width: min(180px, 38vw, 330px);
     }
 }
 
@@ -160,24 +164,26 @@ $themes: (
 }
 
 .cards__decor--popcorn {
-    right: 110px;
+    right: clamp(60px, 8vw, 120px);
     bottom: 0;
-    max-width: min(200px, 28vw);
+    max-width: clamp(140px, 24vw, 200px);
 }
 
 .cards__decor--okko {
     right: 0;
-    bottom: 10px;
-    max-width: min(150px, 22vw);
+    bottom: clamp(6px, 1.5vw, 18px);
+    max-width: clamp(110px, 18vw, 150px);
 }
 
 @media (max-width: 720px) {
     .cards__item {
         grid-template-columns: 1fr;
+        min-height: auto;
     }
 
     .cards__image {
         justify-content: center;
+        padding-right: 0;
 
         img {
             max-width: min(360px, 90vw);
@@ -186,16 +192,13 @@ $themes: (
 
     .cards__link {
         width: 100%;
-    }
-
-    .cards__decor--popcorn {
-        right: 90px;
+        min-width: 0;
     }
 }
 
 @each $name, $theme in $themes {
     .cards__item--#{$name} {
-        --card-ellipse: #{map.get($theme, ellipse)};
+        --card-glow: #{map.get($theme, glow)};
         --card-link-bg: #{map.get($theme, link-bg)};
         --card-logo-h: #{map.get($theme, logo-h)};
     }
