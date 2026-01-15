@@ -15,7 +15,7 @@
   &__ring-progress {
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
-    stroke: url(#timer-gradient);
+    stroke: var(--timer-progress-stroke, url(#timer-gradient));
     stroke-linecap: round;
     transition: stroke-dashoffset 0.3s ease-out;
     will-change: stroke-dashoffset;
@@ -23,6 +23,9 @@
 
   &__ring {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   &__ring-bg {

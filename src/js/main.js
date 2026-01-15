@@ -15,6 +15,8 @@ class Timer {
 
     this.isValid = true;
 
+    this.setupGradient();
+
     this.radius = this.progressCircle.r.baseVal.value;
     this.circumference = 2 * Math.PI * this.radius;
     this.interval = null;
@@ -25,15 +27,27 @@ class Timer {
     this.progressCircle.style.strokeDasharray = this.circumference;
     this.progressCircle.style.strokeDashoffset = this.circumference;
 
-    // Обработка видимости страницы
     this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
-    document.addEventListener('visibilitychange', this.handleVisibilityChange);
-
-    // Обработка фокуса окна (для надежности)
     this.handleFocus = this.handleFocus.bind(this);
-    window.addEventListener('focus', this.handleFocus);
+    this.ac = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    const opts = this.ac ? { signal: this.ac.signal } : undefined;
+    document.addEventListener('visibilitychange', this.handleVisibilityChange, opts);
+    window.addEventListener('focus', this.handleFocus, opts);
 
     this.start();
+  }
+
+  setupGradient() {
+    const gradient = this.root.querySelector('linearGradient#timer-gradient');
+    if (!gradient) return;
+
+    const uid =
+      (typeof crypto !== 'undefined' && crypto.randomUUID)
+        ? `timer-gradient-${crypto.randomUUID()}`
+        : `timer-gradient-${Math.random().toString(16).slice(2)}`;
+
+    gradient.id = uid;
+    this.root.style.setProperty('--timer-progress-stroke', `url(#${uid})`);
   }
 
   start({ secondsLeft = null, emitStart = true } = {}) {
@@ -41,6 +55,7 @@ class Timer {
       clearInterval(this.interval);
     }
 
+    this.root.classList.remove('is-finished');
 
     const seconds = secondsLeft ?? this.duration;
     this.endTime = Date.now() + seconds * 1000;
@@ -142,8 +157,12 @@ class Timer {
 
   destroy() {
     this.stop();
-    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
-    window.removeEventListener('focus', this.handleFocus);
+    if (this.ac) {
+      this.ac.abort();
+    } else {
+      document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+      window.removeEventListener('focus', this.handleFocus);
+    }
     this.root.classList.remove('is-finished');
   }
 
