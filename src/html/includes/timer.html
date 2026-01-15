@@ -1,4 +1,4 @@
-<div class="timer" data-timer data-duration="300">
+<div class="timer" data-timer data-duration="300" aria-label="Таймер обратного отсчета">
   <svg class="timer__ring" width="142" height="142" viewBox="0 0 142 142" aria-hidden="true">
     <defs>
       <linearGradient id="timer-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -12,7 +12,7 @@
   </svg>
 
   <div class="timer__content">
-    <span class="visually-hidden">Осталось</span>
-    <time class="timer__value" role="timer" aria-live="polite">05:00</time>
+    <span class="timer__label">Осталось</span>
+    <time class="timer__value" role="timer" aria-live="polite" aria-atomic="true" datetime="PT300S">05:00</time>
   </div>
 </div>

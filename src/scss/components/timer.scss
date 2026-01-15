@@ -17,7 +17,8 @@
     transform-origin: 50% 50%;
     stroke: url(#timer-gradient);
     stroke-linecap: round;
-    transition: stroke-dashoffset 1s linear;
+    transition: stroke-dashoffset 0.3s ease-out;
+    will-change: stroke-dashoffset;
   }
 
   &__ring {
@@ -25,7 +26,7 @@
   }
 
   &__ring-bg {
-    stroke: #e6e6e6;
+    stroke: #e5e5e5;
   }
 
   &.is-finished {
@@ -34,7 +35,7 @@
 
   circle {
     fill: none;
-    stroke-width: 6;
+    stroke-width: var(--stroke);
   }
 
   &__content {
@@ -44,5 +45,26 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__label {
+    font-family: var(--font-main);
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--color-black1);
+  }
+
+  &__value {
+    font-family: var(--font-accent);
+    font-size: tokens.$fs-title;
+    line-height: tokens.$lh-title;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+  }
+
+  &.is-finished {
+    .timer__value {
+      opacity: 0.6;
+    }
   }
 }
