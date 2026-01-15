@@ -36,22 +36,21 @@ class Timer {
     this.start();
   }
 
-  start() {
+  start({ secondsLeft = null, emitStart = true } = {}) {
     if (this.interval) {
       clearInterval(this.interval);
     }
 
-    // Если был на паузе, используем сохраненное время
-    const startTime = this.pausedTimeLeft !== null 
-      ? Date.now() + this.pausedTimeLeft * 1000
-      : Date.now() + this.duration * 1000;
 
-    this.endTime = startTime;
+    const seconds = secondsLeft ?? this.duration;
+    this.endTime = Date.now() + seconds * 1000;
     this.isPaused = false;
     this.pausedTimeLeft = null;
 
     this.update();
-    this.emit('timer:start');
+    if (emitStart) {
+      this.emit('timer:start');
+    }
 
     this.interval = setInterval(() => this.update(), 1000);
   }
@@ -70,7 +69,8 @@ class Timer {
   resume() {
     if (!this.isPaused || this.pausedTimeLeft === null) return;
 
-    this.start();
+    const secondsLeft = this.pausedTimeLeft;
+    this.start({ secondsLeft, emitStart: false });
     this.emit('timer:resume');
   }
 
@@ -123,8 +123,6 @@ class Timer {
 
     // Обновляем datetime атрибут для accessibility
     if (this.timeEl.tagName === 'TIME') {
-      const date = new Date();
-      date.setSeconds(date.getSeconds() + secondsLeft);
       this.timeEl.setAttribute('datetime', `PT${secondsLeft}S`);
     }
 
