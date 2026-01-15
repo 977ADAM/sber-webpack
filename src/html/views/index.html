@@ -1,11 +1,11 @@
 <% var data={ title: "Главная страница | Проект" }; %>
 
-  <%= _.template(require('./../includes/header.html').default)(data) %>
+  <%= _.template(require('./../includes/header.html'))(data) %>
   
   <main class="main">
     
     <section class="promo" aria-labelledby="promo-title">
-      <%= _.template(require('./../includes/timer.html').default)() %>
+      <%= _.template(require('./../includes/timer.html'))() %>
 
       <div class="promo__content">
         <a href="/" class="promo__logo" aria-label="На главную">
@@ -16,7 +16,7 @@
 
     </section>
 
-    <%= _.template(require('./../includes/cards.html').default)() %>
+    <%= _.template(require('./../includes/cards.html'))() %>
     
     <section class="faq">
       <h2 class="faq__title">Вопросы и ответы</h2>
@@ -24,4 +24,4 @@
 
   </main>
   
-  <%= _.template(require('./../includes/footer.html').default)() %>
+  <%= _.template(require('./../includes/footer.html'))() %>

@@ -8,9 +8,7 @@
     <link type="image/png" sizes="96x96" rel="icon" href="#" />
     <link rel="stylesheet" href="css/style.bundle.css" />
 
-    <title>
-        <%=title%>
-    </title>
+    <title><%= typeof title !== 'undefined' ? title : '' %></title>
 </head>
 
 <body>
