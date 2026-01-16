@@ -48,7 +48,7 @@ const config = {
             options: {
               sassOptions: {
                 quietDeps: true,
-                silenceDeprecations: ["import", "mixed-decls"]
+                silenceDeprecations: ["import"]
               }
             }
           }
