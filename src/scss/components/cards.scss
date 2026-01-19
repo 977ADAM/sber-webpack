@@ -7,7 +7,7 @@ $themes: (
     sber: (
         glow: linear-gradient(97.8deg, rgba(5, 174, 235, .4) -19.65%, rgba(4, 217, 3, .4) 49.44%),
         link-bg: linear-gradient(93.28deg, #99D80A 1.08%, #25B920 53.52%, #02ADEE 103.01%),
-        logo-h: 36px
+        logo-h: 56px
     ),
     okko: (
         glow: linear-gradient(144.43deg, rgba(77, 14, 198, 0) 8.14%, #4D0EC6 79.15%),
@@ -53,7 +53,9 @@ $themes: (
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: clamp(12px, 2.5vw, 28px);
-    padding: clamp(16px, 3vw, 28px);
+    padding-left: clamp(16px, 3vw, 28px);
+    padding-right: clamp(16px, 3vw, 28px);
+    padding-bottom: clamp(10px, 3vw, 16px);
     min-height: 248px;
 
     &::after {
@@ -89,18 +91,23 @@ $themes: (
 }
 
 .cards__title {
+    height: 80px;
     display: flex;
     flex-direction: column;
     gap: 8px;
 
     h3 {
         @include text(clamp(26px, 3.3vw, tokens.$fs-title), 700, 1.05, var(--color-black1));
-        margin: 0;
+        height: 48px;
+        display: flex;
+        align-items: center;
     }
 
     p {
-        @include text(clamp(14px, 2vw, tokens.$fs-text), 400, 1.2, rgba(38, 38, 38, 0.6));
-        margin: 0;
+        @include text(clamp(16px, 2vw, tokens.$fs-text), 400, 1.2, rgba(38, 38, 38, 0.6));
+        height: 24px;
+        display: flex;
+        align-items: center;
     }
 }
 
@@ -141,58 +148,126 @@ $themes: (
     }
 }
 
-.cards__image {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
 
-    padding-right: clamp(0px, 1vw, 8px);
 
-    img {
-        display: block;
-        height: auto;
-        max-width: min(180px, 38vw, 330px);
-    }
-}
+
 
 .cards__decor {
     position: absolute;
-    height: auto;
-    width: auto;
+    z-index: 1;
+    left: clamp(50%, 60vw, 100%);
+}
+
+.cards__decor--sber {
+    width: clamp(250px, 22vw, 290px);
+}
+
+.cards__decor--sberprime {
+    right: clamp(60px, 8vw, 120px);
+    bottom: 0;
+}
+
+.cards__decor--samocat {
+    width: clamp(250px, 20vw, 290px);
+}
+
+.cards__decor--citydrive {
+    width: clamp(200px, 20vw, 250px);
+    left: clamp(50%, 64vw, 100%);
+    top: 0;
+}
+
+.cards__decor--autokeys {
+    width: clamp(100px, 10vw, 135px);
+    left: clamp(50%, 63vw, 100%);
+    top: 25px;
+}
+
+.cards__decor--youdrive {
+    width: clamp(200px, 33vw, 420px);
+    left: clamp(50%, 50vw, 100%);
 }
 
 .cards__decor--popcorn {
-    right: clamp(60px, 8vw, 120px);
+    transform: scaleX(-1);
     bottom: 0;
-    max-width: clamp(140px, 24vw, 200px);
+    z-index: 2;
+    left: clamp(50%, 55vw, 100%);
 }
 
 .cards__decor--okko {
-    right: 0;
+    z-index: 1;
     bottom: clamp(6px, 1.5vw, 18px);
-    max-width: clamp(110px, 18vw, 150px);
+    left: clamp(50%, 65vw, 100%);
 }
+
+.cards__decor--sbercard {
+    max-width: clamp(100px, 14vw, 157px);
+}
+
+.cards__decor--iconleft {
+    left: clamp(50%, 55vw, 100%);
+    top: clamp(38px, 3vw, 45px);
+    max-width: clamp(56px, 11vw, 120px);
+
+}
+
+.cards__decor--iconright {
+    left: clamp(50%, 68vw, 100%);
+    top: clamp(74px, 10vw, 87px);
+    max-width: clamp(56px, 11vw, 130px);
+
+}
+
+.cards__decor--afisha {
+    left: clamp(50%, 60vw, 100%);
+    width: clamp(150px, 20vw, 250px);
+    bottom: 0;
+    z-index: 2;
+}
+
+.cards__decor--edutoria {
+    left: clamp(50%, 50vw, 100%);
+    width: clamp(150px, 20vw, 250px);
+    bottom: 0;
+    z-index: 1;
+}
+
+.cards__decor--hare {
+    left: clamp(50%, 55vw, 100%);
+    width: clamp(150px, 20vw, 250px);
+    bottom: 0;
+    z-index: 2;
+}
+
+.cards__decor--sbericon {
+    left: clamp(50%, 65vw, 100%);
+    width: clamp(150px, 20vw, 250px);
+    bottom: 0;
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 720px) {
     .cards__item {
         grid-template-columns: 1fr;
         min-height: auto;
     }
-
-    .cards__image {
-        justify-content: center;
-        padding-right: 0;
-
-        img {
-            max-width: min(360px, 90vw);
-        }
+    .cards__decor {
+        display: none;
     }
 
     .cards__link {
-        width: 100%;
-        min-width: 0;
+        min-width: 100%;
     }
 }
 
